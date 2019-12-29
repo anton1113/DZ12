@@ -1,3 +1,8 @@
+// Прочитать объемный текстовый файл, в другой файл сохранить таблицу в виде:
+// -------------------------------------------------------------------------
+// | Слово              | Количество в тексте            |
+// _____________________________________________
+
 import java.io.*;
 import java.util.*;
 
@@ -10,7 +15,6 @@ public class MyFile {
         FileWriter file2 = new FileWriter("C://COURSE//dz12//src//javaprogram2.txt");
         StreamTokenizer fileTokenizer =new StreamTokenizer(file);
         while ((fileTokenizer.nextToken()) !=StreamTokenizer.TT_EOF){
-
             if(fileTokenizer.ttype==StreamTokenizer.TT_WORD){
                 wordcount++;
                 int count = map.getOrDefault(fileTokenizer.sval, 0);
@@ -18,6 +22,7 @@ public class MyFile {
             }
         }
         System.out.println("Количество слов в файле: " + wordcount);
+        //Вывожу данные в файл
         for (Map.Entry<String,Integer> pair: map.entrySet()) {
             file2.write("----------------\n");
             file2.write ("|" + pair.getKey() + " |  " + pair.getValue() + " |\n");
